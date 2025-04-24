@@ -1,0 +1,58 @@
+@model StatFunctieCadruViewModel
+
+<h2>Asociază Cadru Didactic la Stat de Funcție</h2>
+
+@if (!ViewData.ModelState.IsValid && ViewData.ModelState.Values.SelectMany(v => v.Errors).Any())
+{
+    <div class="alert alert-danger d-flex align-items-center gap-2" role="alert">
+        <i class="bi bi-exclamation-triangle-fill fs-5"></i>
+        <div>
+            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+            {
+                <p class="mb-0">@error.ErrorMessage</p>
+            }
+        </div>
+    </div>
+}
+
+<form asp-action="AsociazaCadruStat" method="post">
+
+    <div class="form-group">
+        <label asp-for="CadruDidacticId">Cadru Didactic:</label>
+        <select asp-for="CadruDidacticId" asp-items="Model.CadreDisponibile" class="form-control"></select>
+        <span asp-validation-for="CadruDidacticId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="GradDidacticId">Grad Didactic Actual:</label>
+        <select asp-for="GradDidacticId" asp-items="Model.GradeDisponibile" class="form-control"></select>
+        <span asp-validation-for="GradDidacticId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="StatDeFunctieId">Stat De Functie:</label>
+        <select asp-for="StatDeFunctieId" asp-items="Model.StateDisponibile" class="form-control"></select>
+        <span asp-validation-for="StatDeFunctieId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DataDeLa">An început activitate</label>
+        <input asp-for="DataDeLa" type="number" min="1900" max="2100" step="1" class="form-control" />
+        <span asp-validation-for="DataDeLa" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DataPanaLa">An sfârșit activitate (opțional)</label>
+        <input asp-for="DataPanaLa" type="number" min="1900" max="2100" step="1" class="form-control" />
+        <span asp-validation-for="DataPanaLa" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Tarif">Tarif</label>
+        <input asp-for="Tarif" type="number" step="1" min="0" class="form-control" />
+        <span asp-validation-for="Tarif" class="text-danger"></span>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Asociază</button>
+</form>

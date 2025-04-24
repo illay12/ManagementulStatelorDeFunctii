@@ -1,0 +1,34 @@
+@model ManagementulStatelorDeFunctii.ViewModels.CadruDidacticFormViewModel
+
+@{
+    ViewData["Title"] = "Editare Cadru Didactic";
+}
+
+<h2>Editare Cadru Didactic</h2>
+
+<form asp-action="EditCadru" method="post">
+    <input type="hidden" asp-for="CadruDidactic.CadruDidacticId" />
+
+    <div class="form-group">
+        <label asp-for="CadruDidactic.Nume">Nume</label>
+        <input asp-for="CadruDidactic.Nume" class="form-control" />
+        <span asp-validation-for="CadruDidactic.Nume" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CadruDidactic.GradDidacticId">Grad Didactic</label>
+        <select asp-for="CadruDidactic.GradDidacticId" asp-items="Model.GradeDisponibile" class="form-control"></select>
+        <span asp-validation-for="CadruDidactic.GradDidacticId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CadruDidactic.DepartamentId">Departament</label>
+        <select asp-for="CadruDidactic.DepartamentId" asp-items="Model.DepartamenteDisponibile" class="form-control"></select>
+        <span asp-validation-for="CadruDidactic.DepartamentId" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        <i class="bi bi-save"></i> Salvează modificările
+    </button>
+    <a asp-action="Index" class="btn btn-secondary ms-2">Anulează</a>
+</form>
