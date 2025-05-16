@@ -1,3 +1,12 @@
+C:\Users\Laurentiu\Desktop\ManagementulStatelorDeFunctii\obj\Debug\net9.0\ManagementulStatelorDeFunctii.csproj.AssemblyReference.cache
+C:\Users\Laurentiu\Desktop\ManagementulStatelorDeFunctii\obj\Debug\net9.0\ManagementulStatelorDeFunctii.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Laurentiu\Desktop\ManagementulStatelorDeFunctii\obj\Debug\net9.0\ManagementulStatelorDeFunctii.AssemblyInfoInputs.cache
+C:\Users\Laurentiu\Desktop\ManagementulStatelorDeFunctii\obj\Debug\net9.0\ManagementulStatelorDeFunctii.AssemblyInfo.cs
+C:\Users\Laurentiu\Desktop\ManagementulStatelorDeFunctii\obj\Debug\net9.0\ManagementulStatelorDeFunctii.csproj.CoreCompileInputs.cache
+C:\Users\Laurentiu\Desktop\ManagementulStatelorDeFunctii\obj\Debug\net9.0\ManagementulStatelorDeFunctii.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Laurentiu\Desktop\ManagementulStatelorDeFunctii\obj\Debug\net9.0\ManagementulStatelorDeFunctii.RazorAssemblyInfo.cache
+C:\Users\Laurentiu\Desktop\ManagementulStatelorDeFunctii\obj\Debug\net9.0\ManagementulStatelorDeFunctii.RazorAssemblyInfo.cs
+C:\Users\Laurentiu\Desktop\ManagementulStatelorDeFunctii\obj\Debug\net9.0\ManagementulStatelorDeFunctii.sourcelink.json
 C:\Users\Laurentiu\Desktop\ManagementulStatelorDeFunctii\bin\Debug\net9.0\appsettings.Development.json
 C:\Users\Laurentiu\Desktop\ManagementulStatelorDeFunctii\bin\Debug\net9.0\appsettings.json
 C:\Users\Laurentiu\Desktop\ManagementulStatelorDeFunctii\bin\Debug\net9.0\ManagementulStatelorDeFunctii.staticwebassets.runtime.json
@@ -139,14 +148,6 @@ C:\Users\Laurentiu\Desktop\ManagementulStatelorDeFunctii\bin\Debug\net9.0\runtim
 C:\Users\Laurentiu\Desktop\ManagementulStatelorDeFunctii\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
 C:\Users\Laurentiu\Desktop\ManagementulStatelorDeFunctii\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Laurentiu\Desktop\ManagementulStatelorDeFunctii\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
-C:\Users\Laurentiu\Desktop\ManagementulStatelorDeFunctii\obj\Debug\net9.0\ManagementulStatelorDeFunctii.csproj.AssemblyReference.cache
-C:\Users\Laurentiu\Desktop\ManagementulStatelorDeFunctii\obj\Debug\net9.0\ManagementulStatelorDeFunctii.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Laurentiu\Desktop\ManagementulStatelorDeFunctii\obj\Debug\net9.0\ManagementulStatelorDeFunctii.AssemblyInfoInputs.cache
-C:\Users\Laurentiu\Desktop\ManagementulStatelorDeFunctii\obj\Debug\net9.0\ManagementulStatelorDeFunctii.AssemblyInfo.cs
-C:\Users\Laurentiu\Desktop\ManagementulStatelorDeFunctii\obj\Debug\net9.0\ManagementulStatelorDeFunctii.csproj.CoreCompileInputs.cache
-C:\Users\Laurentiu\Desktop\ManagementulStatelorDeFunctii\obj\Debug\net9.0\ManagementulStatelorDeFunctii.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Laurentiu\Desktop\ManagementulStatelorDeFunctii\obj\Debug\net9.0\ManagementulStatelorDeFunctii.RazorAssemblyInfo.cache
-C:\Users\Laurentiu\Desktop\ManagementulStatelorDeFunctii\obj\Debug\net9.0\ManagementulStatelorDeFunctii.RazorAssemblyInfo.cs
 C:\Users\Laurentiu\Desktop\ManagementulStatelorDeFunctii\obj\Debug\net9.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\Laurentiu\Desktop\ManagementulStatelorDeFunctii\obj\Debug\net9.0\scopedcss\bundle\ManagementulStatelorDeFunctii.styles.css
 C:\Users\Laurentiu\Desktop\ManagementulStatelorDeFunctii\obj\Debug\net9.0\scopedcss\projectbundle\ManagementulStatelorDeFunctii.bundle.scp.css

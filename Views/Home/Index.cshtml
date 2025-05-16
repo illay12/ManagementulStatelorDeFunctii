@@ -3,6 +3,21 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4 mb-4">Bun venit</h1>
+    
+    <div class="d-flex justify-content-center gap-3 mb-4">
+        <a asp-controller="StateDeFunctii" asp-action="StatDeFunctie" class="btn btn-primary btn-lg">
+            Statul de Funcții
+        </a>
+        <a asp-controller="CadruDidactic" asp-action="Index" class="btn btn-secondary btn-lg">
+            Lista Profesori
+        </a>
+    </div>
+
+    <p>
+        Află mai multe despre 
+        <a href="https://learn.microsoft.com/aspnet/core" target="_blank">
+            dezvoltarea aplicațiilor web cu ASP.NET Core
+        </a>.
+    </p>
 </div>

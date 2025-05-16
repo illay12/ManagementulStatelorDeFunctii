@@ -1,0 +1,27 @@
+@model ManagementulStatelorDeFunctii.ViewModels.NormaViewModels.CreazaNormaViewModel
+
+@{
+    ViewData["Title"] = "Creează normă";
+}
+
+<h2>Creează o normă pentru un cadru didactic</h2>
+
+@if (!Model.CadreDidacticeDisponibile.Any())
+{
+    <div class="alert alert-info">
+        Nu există cadre didactice disponibile pentru asociere în acest stat de funcție.
+    </div>
+}
+else
+{
+    <form asp-action="CreazaNorma" method="post">
+        <input type="hidden" asp-for="StatDeFunctieId" />
+
+        <div class="form-group">
+            <label asp-for="CadruDidacticId">Cadru didactic</label>
+            <select asp-for="CadruDidacticId" asp-items="Model.CadreDidacticeDisponibile" class="form-control"></select>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-3">Creează normă</button>
+    </form>
+}

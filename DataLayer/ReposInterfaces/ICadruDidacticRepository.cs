@@ -7,4 +7,5 @@ public interface ICadruDidacticRepository
     Task AddAsync(CadruDidactic cadru);
     Task UpdateAsync(CadruDidactic cadru);
     Task DeleteAsync(int id);
+    Task <IEnumerable<CadruDidactic>> GetCadreDidacticeDisponibilePentruAsociereNormaAsync(int statDeFunctieId);
 }

@@ -24,4 +24,5 @@ public partial class CadruDidacticGradDidactic
     public virtual GradDidactic GradDidactic { get; set; } = null!;
 
     public virtual ICollection<Norma> Normas { get; set; } = new List<Norma>();
+
 }

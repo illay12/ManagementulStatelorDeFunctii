@@ -11,6 +11,9 @@ builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepositor
 builder.Services.AddDbContext<StateDeFunctieDbbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddScoped<ICadruDidacticStatFunctieTarifPlataOraRepository, CadruDidacticStatFunctieTarifPlataOraRepository>();
+builder.Services.AddScoped<IStatDeFunctieRepository, StatDeFunctieRepository>();
+builder.Services.AddScoped<INormaRepository, NormaRepository>();
+builder.Services.AddScoped<ICadruDidacticRepository, CadruDidacticRepository>();
 
 var app = builder.Build();
 

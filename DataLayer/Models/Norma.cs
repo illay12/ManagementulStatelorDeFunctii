@@ -20,4 +20,5 @@ public partial class Norma
     public virtual StatDeFunctie StatDefunctie { get; set; } = null!;
 
     public virtual ICollection<CadruDidacticGradDidactic> CadruDidactics { get; set; } = new List<CadruDidacticGradDidactic>();
+
 }

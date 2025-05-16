@@ -42,4 +42,28 @@ public class CadruDidacticRepository : ICadruDidacticRepository
             await _context.SaveChangesAsync();
         }
     }
+
+    public async Task<IEnumerable<CadruDidactic>> GetCadreDidacticeDisponibilePentruAsociereNormaAsync(int statDeFunctieId)
+    {
+        var cadreDisponibileIds = await _context.CadruDidacticGradDidactics
+            .Where(cd => cd.Normas.Any(n => n.StatDefunctieId == statDeFunctieId))
+            .Select(cd => cd.CadruDidacticId)
+            .ToListAsync();
+
+                
+        var cadreDisponibile = await _context.CadruDidactics
+            .Where(cd => !cadreDisponibileIds.Contains(cd.CadruDidacticId) &&
+                        _context.CadruDidacticGradDidactics
+                            .Any(cg => cg.CadruDidacticId == cd.CadruDidacticId))
+            .ToListAsync();
+
+
+        foreach (var cadru in cadreDisponibile)
+            System.Console.WriteLine(cadru.CadruDidacticId + " " + cadru.Nume);
+
+        return cadreDisponibile;
+    
+    }
+
 }
+

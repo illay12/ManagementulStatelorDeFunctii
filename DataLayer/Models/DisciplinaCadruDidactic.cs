@@ -14,4 +14,5 @@ public partial class DisciplinaCadruDidactic
     public virtual CadruDidacticGradDidactic CadruDidactic { get; set; } = null!;
 
     public virtual NormaDisciplina NormaDisciplina { get; set; } = null!;
+
 }

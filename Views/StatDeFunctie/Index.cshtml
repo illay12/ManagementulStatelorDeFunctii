@@ -1,0 +1,76 @@
+@model IEnumerable<ManagementulStatelorDeFunctii.ViewModels.ProfesorDisciplinePeStatViewModel>
+
+@{
+    ViewData["Title"] = "Profesori și Discipline";
+}
+
+<a asp-action="ListaState" class="btn btn-secondary mb-3">
+    &larr; Înapoi la lista statelor
+</a>
+
+<h2 class="mb-4">Profesori și Discipline pe Statul de Funcție</h2>
+
+<a asp-controller="Norma" asp-action="CreazaNorma"
+   asp-route-statDeFunctieId="@ViewBag.StatDeFunctieId"
+   class="btn btn-success mb-4">
+    ➕ Adaugă normă
+</a>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-warning">Nu există cadre didactice asociate pentru acest stat.</div>
+}
+else
+{
+    <div class="row row-cols-1 g-4">
+        @foreach (var profesor in Model)
+        {
+            <div class="col">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <div>
+                                <h5 class="card-title mb-0">@profesor.NumeProfesor</h5>
+                                <h6 class="card-subtitle text-muted">@profesor.Grad</h6>
+                            </div>
+                            <a asp-controller="Norma" asp-action="Edit"
+                               asp-route-cadruDidacticId="@profesor.CadruDidacticId"
+                               asp-route-statDeFunctieId="@ViewBag.StatDeFunctieId"
+                               class="btn btn-outline-primary btn-sm mt-1">
+                                Editează normă
+                            </a>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table table-borderless align-middle mb-0">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Disciplina</th>
+                                        <th>Activitate Teoretica</th>
+                                        <th>Activitate Practica</th>
+                                        <th>Program de Studii</th>
+                                        <th>An</th>
+                                        <th>Grupe</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var disciplina in profesor.DisciplineActivitati)
+                                    {
+                                        <tr>
+                                            <td>@disciplina.DenumireDisciplina</td>
+                                            <td>@disciplina.ActivitateTeoretica</td>
+                                            <td>@disciplina.ActivitatePractica</td>
+                                            <td>@disciplina.ProgramDeStudiu</td>
+                                            <td>@disciplina.AnStudiu</td>
+                                            <td>@disciplina.NumarGrupe</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}

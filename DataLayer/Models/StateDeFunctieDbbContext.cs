@@ -55,6 +55,7 @@ public partial class StateDeFunctieDbbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        
         modelBuilder.Entity<AnPromotie>(entity =>
         {
             entity.ToTable("AnPromotie");
@@ -237,39 +238,55 @@ public partial class StateDeFunctieDbbContext : DbContext
                 .HasConstraintName("FK_GradDidacticNormabil_GradDidactic");
         });
 
+
         modelBuilder.Entity<Norma>(entity =>
         {
-            entity.ToTable("Norma");
+        entity.ToTable("Norma");
 
-            entity.HasOne(d => d.GradDidactic).WithMany(p => p.Normas)
-                .HasForeignKey(d => d.GradDidacticId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Norma_GradDidacticNormabil");
+        entity.HasKey(e => e.NormaId);
+        entity.Property(e => e.NormaId).HasColumnName("NormaID");
+        entity.Property(e => e.GradDidacticId).HasColumnName("GradDidacticID");
+        entity.Property(e => e.StatDefunctieId).HasColumnName("StatDefunctieID");
 
-            entity.HasOne(d => d.StatDefunctie).WithMany(p => p.Normas)
-                .HasForeignKey(d => d.StatDefunctieId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Norma_StatDeFunctie");
+        entity.HasOne(d => d.GradDidactic)
+            .WithMany(p => p.Normas)
+            .HasForeignKey(d => d.GradDidacticId)
+            .OnDelete(DeleteBehavior.ClientSetNull)
+            .HasConstraintName("FK_Norma_GradDidacticNormabil");
 
-            entity.HasMany(d => d.CadruDidactics).WithMany(p => p.Normas)
-                .UsingEntity<Dictionary<string, object>>(
-                    "NormaCadruDidactic",
-                    r => r.HasOne<CadruDidacticGradDidactic>().WithMany()
-                        .HasForeignKey("CadruDidacticId")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("FK_NormaCadruDidactic_CadruDidacticGradDidactic"),
-                    l => l.HasOne<Norma>().WithMany()
-                        .HasForeignKey("NormaId")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("FK_NormaCadruDidactic_Norma"),
-                    j =>
-                    {
-                        j.HasKey("NormaId", "CadruDidacticId");
-                        j.ToTable("NormaCadruDidactic");
-                        j.IndexerProperty<int>("NormaId").HasColumnName("NormaID");
-                        j.IndexerProperty<int>("CadruDidacticId").HasColumnName("CadruDidacticID");
-                    });
+        entity.HasOne(d => d.StatDefunctie)
+            .WithMany(p => p.Normas)
+            .HasForeignKey(d => d.StatDefunctieId)
+            .OnDelete(DeleteBehavior.ClientSetNull)
+            .HasConstraintName("FK_Norma_StatDeFunctie");
+
+        entity
+            .HasMany(n => n.CadruDidactics)
+            .WithMany(cd => cd.Normas) // <- important: mapare inversă
+            .UsingEntity<Dictionary<string, object>>(
+                "NormaCadruDidactic",
+                r => r.HasOne<CadruDidacticGradDidactic>()
+                    .WithMany()
+                    .HasForeignKey("CadruDidacticId")
+                    .HasConstraintName("FK_NormaCadruDidactic_CadruDidacticGradDidactic")
+                    .OnDelete(DeleteBehavior.ClientSetNull),
+                l => l.HasOne<Norma>()
+                    .WithMany()
+                    .HasForeignKey("NormaId")
+                    .HasConstraintName("FK_NormaCadruDidactic_Norma")
+                    .OnDelete(DeleteBehavior.ClientSetNull),
+                j =>
+                {
+                    j.HasKey("NormaId", "CadruDidacticId");
+                    j.ToTable("NormaCadruDidactic");
+                    j.IndexerProperty<int>("NormaId").HasColumnName("NormaID");
+                    j.IndexerProperty<int>("CadruDidacticId").HasColumnName("CadruDidacticID");
+                });
         });
+
+
+
+
 
         modelBuilder.Entity<NormaDisciplina>(entity =>
         {
@@ -371,6 +388,8 @@ public partial class StateDeFunctieDbbContext : DbContext
             entity.Property(e => e.UtilizatorId).HasColumnName("UtilizatorID");
             entity.Property(e => e.Nume).HasMaxLength(20);
         });
+
+        
 
         OnModelCreatingPartial(modelBuilder);
     }

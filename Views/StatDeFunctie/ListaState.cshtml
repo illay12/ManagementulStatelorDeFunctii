@@ -1,0 +1,16 @@
+@model IEnumerable<ManagementulStatelorDeFunctii.Models.StatDeFunctie>
+
+@{
+    ViewData["Title"] = "Lista Statelor";
+}
+
+<h2 class="mb-4">Lista Statelor de Funcție</h2>
+
+<div class="d-grid gap-2">
+    @foreach (var stat in Model)
+    {
+        <a asp-controller="StatDeFunctie" asp-action="Index" asp-route-id="@stat.StatDeFunctieId" class="btn btn-primary">
+            Stat - Anul @stat.An
+        </a>
+    }
+</div>
