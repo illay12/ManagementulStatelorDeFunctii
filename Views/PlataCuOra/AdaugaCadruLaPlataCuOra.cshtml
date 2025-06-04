@@ -1,0 +1,37 @@
+@model ManagementulStatelorDeFunctii.ViewModels.PlataCuOraViewModels.AdaugaCadruLaPlataCuOraViewModel
+
+@{
+    ViewData["Title"] = "Adauga Cadru Didactic la plata cu ora";
+}
+
+<a asp-controller="PlataCuOra"
+   asp-action="Index"
+   asp-route-statDeFunctieId="@Model.StatDeFunctieId"
+   asp-route-semestru="@Model.Semestru"
+   class="btn btn-secondary mb-3">
+    &larr; Înapoi la Plata cu Ora
+</a>
+
+
+<h2>Adauga un Cadru didactic La Plata cu Ora</h2>
+
+@if (!Model.CadreDidacticeDisponibile.Any())
+{
+    <div class="alert alert-info">
+        Nu există cadre didactice disponibile pentru asociere în acest stat de funcție.
+    </div>
+}
+
+else
+{
+    <form asp-action="EditareCadruPlataCuOra" method="get">
+        <input type="hidden" asp-for="StatDeFunctieId" />
+        <div class="form-group">
+            <label asp-for="CadruDidacticId">Cadru didactic</label>
+            <select asp-for="CadruDidacticId" asp-items="Model.CadreDidacticeDisponibile" class="form-control"></select>
+        </div>
+        <input type="hidden" asp-for="Semestru" />
+
+        <button type="submit" class="btn btn-primary mt-3">Adauga Profesor</button>
+    </form>
+}

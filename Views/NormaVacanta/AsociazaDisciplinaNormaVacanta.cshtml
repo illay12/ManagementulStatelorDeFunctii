@@ -1,0 +1,36 @@
+@using ManagementulStatelorDeFunctii.ViewModels.NormaVacantaViewModels
+@model AsociereDisciplinaNormaVacantaViewModel
+
+<a asp-controller="Norma"
+   asp-action="EditareNormaVacanta"
+   asp-route-normaId="@Model.NormaId"
+   asp-route-statDeFunctieId="@Model.StatDeFunctieId"
+   class="btn btn-secondary mb-3">
+    &larr; Înapoi la Editarea Normei
+</a>
+
+<h2>Asociază disciplină la normă</h2>
+
+<h4>Disciplină selectată: <strong>@ViewBag.DenumireDisciplina</strong></h4>
+<form asp-action="AsociazaDisciplinaNormaVacanta" method="post" id="asociereForm">
+    <input type="hidden" asp-for="DisciplinaId" />
+    <input type="hidden" asp-for="NormaId" />
+
+    <div class="form-group mt-3">
+        <label asp-for="NumarSerii"></label>
+        <input asp-for="NumarSerii" class="form-control" type="number" min="1" />
+        <span asp-validation-for="NumarSerii" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="NumarGrupe"></label>
+        <select asp-for="NumarGrupe" asp-items="ViewBag.GrupeDisponibile" class="form-control">
+            <option value="">-- Selectează numărul de grupe --</option>
+        </select>
+        <span asp-validation-for="NumarGrupe" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success mt-3">Salvează asocierea</button>
+</form>
+
+

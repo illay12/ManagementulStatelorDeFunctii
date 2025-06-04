@@ -1,0 +1,33 @@
+@model AsociereDisciplinaNormaViewModel
+
+<h2>Asociază disciplină la normă</h2>
+
+<h4>Disciplină selectată: <strong>@ViewBag.DenumireDisciplina</strong></h4>
+
+<form asp-action="AsociazaDisciplinaLaPlataCuOra" method="post">
+    <input type="hidden" asp-for="CadruDidacticId" />
+    <input type="hidden" asp-for="DisciplinaId" />
+    
+
+    <div class="form-group mt-3">
+        <label asp-for="NumarSerii">Număr serii</label>
+        <input asp-for="NumarSerii" class="form-control" type="number" min="0" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="NumarGrupe">Număr grupe</label>
+        <input asp-for="NumarGrupe" class="form-control" type="number" min="0" />
+    </div>
+
+    <div class="form-check mt-2">
+        <input asp-for="AreActivitateTeoretica" class="form-check-input" />
+        <label asp-for="AreActivitateTeoretica" class="form-check-label">Activitate Teoretică</label>
+    </div>
+
+    <div class="form-check">
+        <input asp-for="AreActivitatePractica" class="form-check-input" />
+        <label asp-for="AreActivitatePractica" class="form-check-label">Activitate Practică</label>
+    </div>
+
+    <button type="submit" class="btn btn-success mt-3">Salvează asocierea</button>
+</form>

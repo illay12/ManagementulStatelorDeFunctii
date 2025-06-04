@@ -1,32 +1,66 @@
 @model EditareNormaViewModel
 
-<h2>Editare normă pentru @Model.NumeProfesor</h2>
+@{
+    ViewData["Title"] = "Editare Normă";
+}
 
-<h4>Discipline asociate</h4>
-<ul>
-    @foreach (var disc in Model.DisciplineAsociate)
-    {
-        <li>
-            @disc.Denumire
-            <form asp-action="EliminaDisciplina" method="post" style="display:inline;">
+<div class="container mt-4">
+    <a asp-controller="StatDeFunctie"
+       asp-action="Index"
+       asp-route-id="@Model.StatDeFunctieId"
+       class="btn btn-secondary mb-4">
+        <i class="bi bi-arrow-left-circle me-1"></i> Înapoi la Statul de Funcție
+    </a>
+
+    <div class="card shadow-sm border-0 rounded-4">
+        <div class="card-header bg-primary text-white rounded-top-4">
+            <h4 class="mb-0">
+                <i class="bi bi-person-badge me-2"></i> Editare Normă pentru @Model.NumeProfesor
+            </h4>
+        </div>
+
+        <div class="card-body p-4">
+            <h5 class="mb-3">Discipline asociate</h5>
+
+            @if (Model.DisciplineAsociate.Any())
+            {
+                <ul class="list-group mb-4">
+                    @foreach (var disc in Model.DisciplineAsociate)
+                    {
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span>@disc.Denumire</span>
+                            <form asp-action="EliminaDisciplina" method="post" class="mb-0">
+                                <input type="hidden" name="cadruDidacticId" value="@Model.CadruDidacticId" />
+                                <input type="hidden" name="disciplinaId" value="@disc.DisciplinaId" />
+                                <input type="hidden" name="statDeFunctieId" value="@Model.StatDeFunctieId" />
+                                <button type="submit" class="btn btn-sm btn-danger">
+                                    <i class="bi bi-trash-fill"></i> Șterge
+                                </button>
+                            </form>
+                        </li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <div class="alert alert-info">Acest cadru didactic nu are discipline asociate momentan.</div>
+            }
+
+            <h5 class="mt-4 mb-3">Adaugă disciplină</h5>
+
+            <form asp-action="AsociazaDisciplinaNorma" method="get">
                 <input type="hidden" name="cadruDidacticId" value="@Model.CadruDidacticId" />
-                <input type="hidden" name="disciplinaId" value="@disc.DisciplinaId" />
                 <input type="hidden" name="statDeFunctieId" value="@Model.StatDeFunctieId" />
-                <button type="submit" class="btn btn-sm btn-danger">Șterge</button>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Disciplină disponibilă</label>
+                    <select name="disciplinaId" class="form-select" asp-items="Model.DisciplineDisponibile"></select>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-chevron-right"></i> Continuă spre detalii
+                </button>
             </form>
-        </li>
-    }
-</ul>
-
-<h4>Adaugă disciplină</h4>
-<form asp-action="AsociazaDisciplinaNorma" method="get">
-    <input type="hidden" name="cadruDidacticId" value="@Model.CadruDidacticId" />
-
-    <div class="form-group">
-        <label>Disciplină disponibilă</label>
-        <select name="disciplinaId" class="form-control" asp-items="Model.DisciplineDisponibile"></select>
+        </div>
     </div>
-
-    <button type="submit" class="btn btn-primary mt-2">Continuă spre detalii</button>
-</form>
-
+</div>

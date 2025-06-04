@@ -1,0 +1,42 @@
+@using ManagementulStatelorDeFunctii.ViewModels.PlataCuOraViewModels
+@model EditareCadruPlataCuOraViewModel
+
+<a asp-controller="PlataCuOra"
+   asp-action="Index"
+   asp-route-statDeFunctieId="@Model.StatDeFunctieId"
+   asp-route-semestru="@Model.Semestru"
+   class="btn btn-secondary mb-3">
+    &larr; Înapoi la Plata cu Ora
+</a>
+
+
+<h2>Editează discipline la Plata Cu Ora - @Model.NumeProfesor</h2>
+
+<h4>Discipline asociate</h4>
+<ul>
+    @foreach (var d in Model.DisciplineAsociate)
+    {
+        <li>
+            @d.Denumire
+            <form asp-action="StergeDisciplinaPlataCuOra" method="post" style="display:inline;">
+                <input type="hidden" name="disciplinaId" value="@d.DisciplinaId" />
+                <input type="hidden" name="cadruDidacticId" value="@Model.CadruDidacticId" />
+                <input type="hidden" name="statDeFunctieId" value="@Model.StatDeFunctieId" />
+                <button class="btn btn-sm btn-danger">Șterge</button>
+            </form>
+        </li>
+    }
+</ul>
+
+
+<h4>Adaugă disciplină</h4>
+<form asp-action="AsociazaDisciplinaLaPlataCuOra" method="get">
+    <input type="hidden" name="cadruDidacticId" value="@Model.CadruDidacticId" />
+
+    <div class="form-group">
+        <label>Disciplină disponibilă</label>
+        <select name="disciplinaId" class="form-control" asp-items="Model.DisciplineDisponibile"></select>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-2">Continuă spre detalii</button>
+</form>

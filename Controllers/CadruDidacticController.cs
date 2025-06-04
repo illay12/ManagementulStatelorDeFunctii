@@ -18,13 +18,15 @@ namespace ManagementulStatelorDeFunctii.Controllers
         private readonly IGenericRepository<CadruDidacticGradDidactic> _repoCadruDidacticGradDidactic;
         private readonly IGenericRepository<StatDeFunctie> _repoStat;
         private readonly ICadruDidacticStatFunctieTarifPlataOraRepository _repoTarif;
+        private readonly ICadruDidacticRepository _cadruDidacticRepository;
         public CadruDidacticController(
             IGenericRepository<CadruDidactic> repoCadru,
             IGenericRepository<GradDidactic> repoGrade,
             IGenericRepository<Departament> repoDepartament,
             IGenericRepository<CadruDidacticGradDidactic> repoCadruDidacticGradDidactic,
             IGenericRepository<StatDeFunctie> repoStat,
-            ICadruDidacticStatFunctieTarifPlataOraRepository repoTarif)
+            ICadruDidacticStatFunctieTarifPlataOraRepository repoTarif,
+            ICadruDidacticRepository cadruDidacticRepository)
         {
             _repoCadru = repoCadru;
             _repoGrade = repoGrade;
@@ -32,11 +34,12 @@ namespace ManagementulStatelorDeFunctii.Controllers
             _repoCadruDidacticGradDidactic = repoCadruDidacticGradDidactic;
             _repoTarif = repoTarif;
             _repoStat = repoStat;
+            _cadruDidacticRepository = cadruDidacticRepository;
         }
 
         public async Task<IActionResult> Index()
         {
-            var cadre = await _repoCadru.GetAllAsync();
+            var cadre = await  _cadruDidacticRepository.GetCadreDidacticeCompletAsync();
             return View(cadre);
         }
 

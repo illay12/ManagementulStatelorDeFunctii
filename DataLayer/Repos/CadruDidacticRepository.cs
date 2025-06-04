@@ -1,4 +1,5 @@
 using ManagementulStatelorDeFunctii.Models;
+using ManagementulStatelorDeFunctii.ViewModels.CadruDidacticViewModels;
 using Microsoft.EntityFrameworkCore;
 public class CadruDidacticRepository : ICadruDidacticRepository
 {
@@ -50,7 +51,7 @@ public class CadruDidacticRepository : ICadruDidacticRepository
             .Select(cd => cd.CadruDidacticId)
             .ToListAsync();
 
-                
+
         var cadreDisponibile = await _context.CadruDidactics
             .Where(cd => !cadreDisponibileIds.Contains(cd.CadruDidacticId) &&
                         _context.CadruDidacticGradDidactics
@@ -62,7 +63,31 @@ public class CadruDidacticRepository : ICadruDidacticRepository
             System.Console.WriteLine(cadru.CadruDidacticId + " " + cadru.Nume);
 
         return cadreDisponibile;
-    
+
+    }
+
+    public async Task<CadruDidactic> GetCadruDidaticByCadruDidacticGradDidacticIdAsync(int cadruDidacticGradDidacticId)
+    {
+        return await _context.CadruDidactics
+            .Where(cd => cd.CadruDidacticGradDidactics.Any(cg => cg.CadruDidacticGradDidacticId == cadruDidacticGradDidacticId))
+            .FirstOrDefaultAsync();
+    }
+
+    public async Task<List<CadruDidacticCompletViewModel>> GetCadreDidacticeCompletAsync()
+    {
+        var cadreDidactice = await _context.CadruDidactics
+            .Include(c => c.GradDidactic)
+            .Include(c => c.Departament)
+            .Select(c => new CadruDidacticCompletViewModel
+            {
+                CadruDidacticId = c.CadruDidacticId,
+                Nume = c.Nume,
+                GradDidactic = c.GradDidactic.NumeGrad,
+                Departament = c.Departament.DenumireDepartament
+            })
+            .ToListAsync();
+
+        return cadreDidactice;
     }
 
 }

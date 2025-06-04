@@ -1,16 +1,122 @@
 @model IEnumerable<ManagementulStatelorDeFunctii.Models.StatDeFunctie>
 
 @{
-    ViewData["Title"] = "Lista Statelor";
+    ViewData["Title"] = "Lista Statelor de Funcție";
 }
 
-<h2 class="mb-4">Lista Statelor de Funcție</h2>
-
-<div class="d-grid gap-2">
-    @foreach (var stat in Model)
-    {
-        <a asp-controller="StatDeFunctie" asp-action="Index" asp-route-id="@stat.StatDeFunctieId" class="btn btn-primary">
-            Stat - Anul @stat.An
-        </a>
+<style>
+    .stat-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border-radius: 1rem;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        padding: 1.5rem;
+        min-height: 230px;
+        position: relative;
     }
+
+    .stat-card:hover {
+        transform: translateY(-6px) scale(1.01);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .stat-icon {
+        font-size: 2.5rem;
+        color: #0d6efd;
+    }
+
+    .stat-card .card-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+
+    .btn-create {
+        font-size: 1rem;
+        padding: 0.6rem 1.2rem;
+    }
+
+    .badge-draft {
+        font-size: 0.875rem;
+        padding: 0.4rem 0.6rem;
+    }
+
+    .btn-delete {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        background-color: transparent;
+        border: none;
+        color: #dc3545;
+        font-size: 1.2rem;
+        cursor: pointer;
+    }
+
+    .btn-delete:hover {
+        color: #a71d2a;
+    }
+</style>
+
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="fw-bold mb-0">Lista Statelor de Funcție</h2>
+            <p class="text-muted mb-0">Selectează un stat pentru detalii sau modificări.</p>
+        </div>
+        <a asp-controller="StatDeFunctie" asp-action="CreeazaStatDeFunctie" class="btn btn-success btn-create">
+            <i class="bi bi-plus-lg me-1"></i> Adaugă Stat Nou
+        </a>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        @foreach (var stat in Model)
+        {
+            <div class="col">
+                <div class="card stat-card h-100">
+                    <!-- Buton de ștergere -->
+                    <form asp-controller="StatDeFunctie" asp-action="StergeStatDeFunctie" asp-route-id="@stat.StatDeFunctieId" method="post" onsubmit="return confirm('Ești sigur că vrei să ștergi acest stat?');">
+                        <button type="submit" class="btn-delete" title="Șterge statul">
+                            <i class="bi bi-trash3-fill"></i>
+                        </button>
+                    </form>
+
+                    <div class="card-body d-flex flex-column justify-content-between">
+                        <div class="mb-3 d-flex justify-content-between align-items-center">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-folder-fill stat-icon me-2"></i>
+                                <span class="card-title">Stat - Anul @stat.An</span>
+                            </div>
+                            @if (stat.Draft)
+                            {
+                                <span class="badge bg-warning text-dark badge-draft">Draft</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-success badge-draft">Finalizat</span>
+                            }
+                        </div>
+
+                        <div class="d-flex flex-column gap-2">
+                            <a asp-controller="StatDeFunctie" asp-action="Index" asp-route-id="@stat.StatDeFunctieId" class="btn btn-outline-primary">
+                                Vizualizează Detalii
+                            </a>
+
+                            <form asp-controller="StatDeFunctie" asp-action="ToggleDraft" asp-route-id="@stat.StatDeFunctieId" method="post">
+                                @if (stat.Draft)
+                                {
+                                    <button type="submit" class="btn btn-sm btn-success w-100">
+                                        <i class="bi bi-check-circle"></i> Marchează ca Final
+                                    </button>
+                                }
+                                else
+                                {
+                                    <button type="submit" class="btn btn-sm btn-warning w-100">
+                                        <i class="bi bi-pencil-fill"></i> Marchează ca Draft
+                                    </button>
+                                }
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 </div>

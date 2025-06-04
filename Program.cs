@@ -14,6 +14,7 @@ builder.Services.AddScoped<ICadruDidacticStatFunctieTarifPlataOraRepository, Cad
 builder.Services.AddScoped<IStatDeFunctieRepository, StatDeFunctieRepository>();
 builder.Services.AddScoped<INormaRepository, NormaRepository>();
 builder.Services.AddScoped<ICadruDidacticRepository, CadruDidacticRepository>();
+builder.Services.AddScoped<IPlataCuOraRepository, PlataCuOraRepository>();
 
 var app = builder.Build();
 

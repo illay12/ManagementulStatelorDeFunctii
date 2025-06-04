@@ -1,32 +1,94 @@
 @model AsociereDisciplinaNormaViewModel
 
+<a asp-controller="Norma"
+   asp-action="Edit"
+   asp-route-cadruDidacticId="@Model.CadruDidacticId"
+   asp-route-statDeFunctieId="@Model.StatDeFunctieId"
+   class="btn btn-secondary mb-3">
+    &larr; Înapoi la Editarea Normei
+</a>
+
 <h2>Asociază disciplină la normă</h2>
+
+@Html.ValidationSummary(false, "", new { @class = "text-danger" })
 
 <h4>Disciplină selectată: <strong>@ViewBag.DenumireDisciplina</strong></h4>
 
-<form asp-action="AsociazaDisciplinaNorma" method="post">
+<form asp-action="AsociazaDisciplinaNorma" method="post" id="asociereForm">
     <input type="hidden" asp-for="CadruDidacticId" />
     <input type="hidden" asp-for="DisciplinaId" />
+    <input type="hidden" asp-for="StatDeFunctieId" />
 
     <div class="form-group mt-3">
-        <label asp-for="NumarSerii">Număr serii</label>
-        <input asp-for="NumarSerii" class="form-control" type="number" min="0" />
+        <label asp-for="NumarSerii"></label>
+        <input asp-for="NumarSerii" class="form-control" type="number" min="1" />
+        <span asp-validation-for="NumarSerii" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label asp-for="NumarGrupe">Număr grupe</label>
-        <input asp-for="NumarGrupe" class="form-control" type="number" min="0" />
+        <label asp-for="NumarGrupe"></label>
+        <select asp-for="NumarGrupe" asp-items="ViewBag.GrupeDisponibile" class="form-control" id="NumarGrupe">
+            <option value="">-- Selectează numărul de grupe --</option>
+        </select>
+        <span asp-validation-for="NumarGrupe" class="text-danger"></span>
     </div>
 
     <div class="form-check mt-2">
-        <input asp-for="AreActivitateTeoretica" class="form-check-input" />
+        <input asp-for="AreActivitateTeoretica" class="form-check-input" id="AreActivitateTeoretica" />
         <label asp-for="AreActivitateTeoretica" class="form-check-label">Activitate Teoretică</label>
     </div>
 
     <div class="form-check">
-        <input asp-for="AreActivitatePractica" class="form-check-input" />
+        <input asp-for="AreActivitatePractica" class="form-check-input" id="AreActivitatePractica" />
         <label asp-for="AreActivitatePractica" class="form-check-label">Activitate Practică</label>
+    </div>
+
+    <div class="text-danger" id="validationMessage" style="display:none;">
+        Trebuie să selectezi cel puțin un tip de activitate.
     </div>
 
     <button type="submit" class="btn btn-success mt-3">Salvează asocierea</button>
 </form>
+
+@section Scripts {
+<script>
+    const form = document.getElementById("asociereForm");
+    const checkTeoretica = document.getElementById("AreActivitateTeoretica");
+    const checkPractica = document.getElementById("AreActivitatePractica");
+    const numarGrupeSelect = document.getElementById("NumarGrupe");
+    const validationMessage = document.getElementById("validationMessage");
+
+    function updateGrupeState() {
+        if (checkPractica.checked) {
+            numarGrupeSelect.disabled = false;
+        } else {
+            numarGrupeSelect.disabled = true;
+            numarGrupeSelect.value = ""; // reset vizual
+        }
+    }
+
+    window.addEventListener("DOMContentLoaded", updateGrupeState);
+    checkPractica.addEventListener("change", updateGrupeState);
+
+    form.addEventListener("submit", function (e) {
+        const teoretica = checkTeoretica.checked;
+        const practica = checkPractica.checked;
+
+        if (!teoretica && !practica) {
+            e.preventDefault();
+            validationMessage.style.display = "block";
+        } else {
+            validationMessage.style.display = "none";
+        }
+
+        if (numarGrupeSelect.disabled) {
+            // injectează un hidden input cu valoarea 0
+            const hiddenInput = document.createElement("input");
+            hiddenInput.type = "hidden";
+            hiddenInput.name = "NumarGrupe";
+            hiddenInput.value = 0;
+            form.appendChild(hiddenInput);
+        }
+    });
+</script>
+}

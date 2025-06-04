@@ -1,0 +1,45 @@
+@model ManagementulStatelorDeFunctii.ViewModels.StatDeFunctieViewModels.CreeazaStatDeFunctieViewModel
+
+@{
+    ViewData["Title"] = "Adaugă Stat Nou";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-sm border-0 rounded-4">
+        <div class="card-header bg-primary text-white py-3 rounded-top-4">
+            <h4 class="mb-0">
+                <i class="bi bi-file-earmark-plus"></i> Adaugă Stat de Funcție
+            </h4>
+        </div>
+
+        <div class="card-body px-4 py-4">
+            <form asp-action="CreeazaStatDeFunctie" method="post">
+                <div class="mb-4">
+                    <label asp-for="DepartamentId" class="form-label fw-semibold">
+                        <i class="bi bi-building"></i> Departament
+                    </label>
+                    <select asp-for="DepartamentId" asp-items="Model.Departamente" class="form-select"></select>
+                    <span asp-validation-for="DepartamentId" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-4">
+                    <label asp-for="AnStat" class="form-label fw-semibold">
+                        <i class="bi bi-calendar"></i> An
+                    </label>
+                    <input asp-for="AnStat" class="form-control" type="number" min="2000" max="2100" placeholder="Ex: 2025" />
+                    <span asp-validation-for="AnStat" class="text-danger small"></span>
+                </div>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-success btn-lg">
+                        <i class="bi bi-check-circle-fill"></i> Salvează
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

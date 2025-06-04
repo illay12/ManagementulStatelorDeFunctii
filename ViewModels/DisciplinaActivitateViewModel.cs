@@ -8,11 +8,17 @@ namespace ManagementulStatelorDeFunctii.ViewModels
     public class DisciplinaActivitateViewModel
     {
         public string DenumireDisciplina { get; set; }
-        public int ActivitateTeoretica{ get; set; } 
+        public int ActivitateTeoretica { get; set; }
         public int ActivitatePractica { get; set; }
         public string ProgramDeStudiu { get; set; }
         public int AnStudiu { get; set; }
         public int NumarGrupe { get; set; }
         public int Semestru { get; set; }
+        public int NumarSaptamaniActivitate { get; set; }
+        public decimal KCoeficientActTeoretica { get; set; }
+        public decimal KCoeficientActPractica { get; set; }
+        public decimal OrePeSemestru { get; set; }
+        public decimal PlataPeSemestru { get; set; }
+
     }
 }

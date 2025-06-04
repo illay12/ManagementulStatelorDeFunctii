@@ -52,6 +52,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Laurentiu/Desktop/ManagementulStatelorDeFunctii/Views/NormaVacanta/AfiseazaNormeVacante.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTm9ybWFWYWNhbnRhXEFmaXNlYXphTm9ybWVWYWNhbnRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Laurentiu/Desktop/ManagementulStatelorDeFunctii/Views/NormaVacanta/AsociazaDisciplinaNormaVacanta.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTm9ybWFWYWNhbnRhXEFzb2NpYXphRGlzY2lwbGluYU5vcm1hVmFjYW50YS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Laurentiu/Desktop/ManagementulStatelorDeFunctii/Views/NormaVacanta/EditareNormaVacanta.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTm9ybWFWYWNhbnRhXEVkaXRhcmVOb3JtYVZhY2FudGEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Laurentiu/Desktop/ManagementulStatelorDeFunctii/Views/Norma/AsociazaDisciplinaNorma.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTm9ybWFcQXNvY2lhemFEaXNjaXBsaW5hTm9ybWEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -64,12 +76,32 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTm9ybWFcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Laurentiu/Desktop/ManagementulStatelorDeFunctii/Views/PlataCuOra/AdaugaCadruLaPlataCuOra.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxhdGFDdU9yYVxBZGF1Z2FDYWRydUxhUGxhdGFDdU9yYS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Laurentiu/Desktop/ManagementulStatelorDeFunctii/Views/PlataCuOra/AsociazaDisciplinaLaPlataCuOra.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxhdGFDdU9yYVxBc29jaWF6YURpc2NpcGxpbmFMYVBsYXRhQ3VPcmEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Laurentiu/Desktop/ManagementulStatelorDeFunctii/Views/PlataCuOra/EditareCadruPlataCuOra.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxhdGFDdU9yYVxFZGl0YXJlQ2FkcnVQbGF0YUN1T3JhLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Laurentiu/Desktop/ManagementulStatelorDeFunctii/Views/PlataCuOra/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxhdGFDdU9yYVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Laurentiu/Desktop/ManagementulStatelorDeFunctii/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Laurentiu/Desktop/ManagementulStatelorDeFunctii/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Laurentiu/Desktop/ManagementulStatelorDeFunctii/Views/StatDeFunctie/CreeazaStatDeFunctie.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhdERlRnVuY3RpZVxDcmVlYXphU3RhdERlRnVuY3RpZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Laurentiu/Desktop/ManagementulStatelorDeFunctii/Views/StatDeFunctie/Index.cshtml]

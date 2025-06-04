@@ -1,5 +1,13 @@
 @model ManagementulStatelorDeFunctii.ViewModels.NormaViewModels.CreazaNormaViewModel
 
+<a asp-controller="StatDeFunctie"
+   asp-action="Index"
+   asp-route-id="@Model.StatDeFunctieId"
+   class="btn btn-secondary mb-3">
+    &larr; Înapoi la Statul De Funcție
+</a>
+
+
 @{
     ViewData["Title"] = "Creează normă";
 }
